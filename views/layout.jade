@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title Express Website
+    link(href='/stylesheets/bootstrap.css', rel='stylesheet')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+      a.navbar-brand(href='/') NodeAuth
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarsExampleDefault.collapse.navbar-collapse
+        ul.nav.navbar-nav.mr-auto
+          if user
+            li.nav-item
+              a.nav-link(href='/')
+              | Members 
+          if !user   
+            li.nav-item
+              a.nav-link(href='/users/register') Register
+            li.nav-item
+              a.nav-link(href='/users/login') Login
+        ul.nav.navbar-nav.navbar-right
+          if user
+            li
+              a.btn.btn-primary(href='/users/logout') Logout
+    .container
+      != messages()
+    block content
